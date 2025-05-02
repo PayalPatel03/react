@@ -1,21 +1,26 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 function UncontrolledForm() {
   const inputRef = useRef(null);
+  const [name, setName] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Input value: ${inputRef.current.value}`);
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
+  const handleSubmit = () => {
+    setName(inputRef.current.value);
+    inputRef.current.value='';
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <>
       <input type="text" ref={inputRef} />
-      <br/>
-      <button   onClick={handleSubmit} type="submit">Submit</button>
-    </form>
+      <br />
+      <button onClick={handleSubmit}>Submit</button>
+      <h2>{name}</h2>
+    </>
   );
 }
 
 export default UncontrolledForm;
-
