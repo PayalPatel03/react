@@ -17,8 +17,13 @@ const Form = () => {
     };
     const handleDelete = (id)=>{
       let data = list.filter((data)=> data.id !== id)
-      setList(data)
+      setList(data);
     }
+
+    const handleEdit = (id)=>{
+        let newData = list.filter((newData)=> newData.id !== newData)
+        setList(newData);
+      }
    
 
   return (
@@ -60,7 +65,7 @@ const Form = () => {
       <button type="submit" className="btn btn-primary">Submit</button>
       </form>
         </div>
-        <table className="table table-bordered mt-5">
+        <table className="table table-secondary mt-5">
           <thead>
             <tr>
               <th>#</th>
@@ -81,7 +86,8 @@ const Form = () => {
                       <td>{ele.password}</td>
                       <td>
                       <button onClick={() => handleDelete(ele.id)} className='btn btn-danger me-2'>Delete</button>
-                        <button className='btn btn-warning'>Edit</button>
+                      <button onClick={() => handleEdit(ele.id)} className='btn btn-warning me-2'>Edit</button>
+                    
                       </td>
                     </tr>
                 )
