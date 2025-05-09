@@ -14,7 +14,6 @@ const Form = () => {
     e.preventDefault();
 
     if (editId !== -1) {
-      
       const updatedList = list.map((item) =>
         item.id === editId ? { ...user, id: editId } : item
       );
