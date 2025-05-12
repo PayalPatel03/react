@@ -196,6 +196,8 @@ const Form = () => {
                     <td>{ele.username}</td>
                     <td>{ele.email}</td>
                     <td>{ele.password}</td>
+                    <td>{ele.hobby}</td>
+                    <td>{ele.gender}</td>
                     <td>
                       <button
                         onClick={() => handleDelete(ele.id)}
