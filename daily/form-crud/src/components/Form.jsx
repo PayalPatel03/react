@@ -19,30 +19,29 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-  const id = Date.now();
+    e.preventDefault();
+    const id = Date.now();
 
-  if (editIdx === -1) {
-    const newList = [...list, { ...user, id }];
-    setList(newList);
-    localStorage.setItem("users", JSON.stringify(newList));
-  } else {
-    let arr = list.map((val) => {
-      return val.id === editIdx ? { ...user, id: editIdx } : val;
-    });
-    setList(arr);
-    localStorage.setItem("users", JSON.stringify(arr));
-    setEditIdx(-1);
-    editRef.current.innerText = "Submit";
-  }
+    if (editIdx === -1) {
+      const newList = [...list, { ...user, id }];
+      setList(newList);
+      localStorage.setItem("users", JSON.stringify(newList));
+    } else {
+      let arr = list.map((val) => {
+        return val.id === editIdx ? { ...user, id: editIdx } : val;
+      });
+      setList(arr);
+      localStorage.setItem("users", JSON.stringify(arr));
+      setEditIdx(-1);
+      editRef.current.innerText = "Submit";
+    }
 
-  setUser({});
-};
-
+    setUser({});
+  };
 
   const handleDelete = (id) => {
     let data = list.filter((data) => data.id !== id);
-        localStorage.setItem("users", JSON.stringify(data));
+    localStorage.setItem("users", JSON.stringify(data));
     setList(data);
   };
 
@@ -186,7 +185,6 @@ const Form = () => {
             </form>
           </div>
           <table className="table table-bordered mt-5">
-           
             <thead>
               <tr>
                 <th>#</th>
