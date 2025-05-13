@@ -7,6 +7,11 @@ const Form = () => {
   const editRef = useRef();
   const focusRef = useRef();
 
+  useEffect(() => {
+    let oldList = JSON.parse(localStorage.getItem("users")) || [];
+    setList(oldList);
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     let newUser = { ...user, [name]: value };
@@ -14,26 +19,30 @@ const Form = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const id = Date.now();
+  e.preventDefault();
+  const id = Date.now();
 
-    if (editIdx == -1) {
-      setList([...list, { ...user, id }]);
-    } else {
-      let arr = list.map((val) => {
-        return val.id === editIdx ? { ...user } : val;
-      });
-      setList(arr);
-      setEditIdx(-1);
-      editRef.current.innerText = "Submit";
-    }
+  if (editIdx === -1) {
+    const newList = [...list, { ...user, id }];
+    setList(newList);
+    localStorage.setItem("users", JSON.stringify(newList));
+  } else {
+    let arr = list.map((val) => {
+      return val.id === editIdx ? { ...user, id: editIdx } : val;
+    });
+    setList(arr);
+    localStorage.setItem("users", JSON.stringify(arr));
+    setEditIdx(-1);
+    editRef.current.innerText = "Submit";
+  }
 
-    setUser({});
-    // focusRef.current.focus();
-  };
+  setUser({});
+};
+
 
   const handleDelete = (id) => {
     let data = list.filter((data) => data.id !== id);
+        localStorage.setItem("users", JSON.stringify(data));
     setList(data);
   };
 
@@ -177,6 +186,7 @@ const Form = () => {
             </form>
           </div>
           <table className="table table-bordered mt-5">
+           
             <thead>
               <tr>
                 <th>#</th>
