@@ -198,7 +198,14 @@ function App() {
 
               {/* address */}
               <div className="mb-3">
-                
+                <textarea 
+                name="address" 
+                className="form-control"
+                 id="address" 
+                 placeholder="Enter your address"
+                 value={employee.address || ''}
+                 onChange={handleChange}
+                 ></textarea>
               </div>
 
               <button className="btn btn-info">Add</button>
@@ -218,12 +225,13 @@ function App() {
                   <th>Salary</th>
                   <th>Count</th>
                   <th>City</th>
+                  <th>Address</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {empList.map((user, index) => {
-                  const { id, ename, salary, count,city } = user;
+                  const { id, ename, salary, count,city,address } = user;
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -231,6 +239,7 @@ function App() {
                       <td>{salary}</td>
                       <td>{count}</td>
                       <td>{city}</td>
+                      <td>{address}</td>
                       <td>
                         <button
                           onClick={() => handleDelete(id)}
