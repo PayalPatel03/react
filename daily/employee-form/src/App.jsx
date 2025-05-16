@@ -143,37 +143,36 @@ function App() {
                 </div>
               </div>
 
-              {/* radio */}
-              <div className="mb-3">
-                <div>
-                  <label htmlFor="gender" className="fw-bold mb-3">
-                    Gender
-                  </label>
-                  <br />
-                  <div className="form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="radio"
+              {/* gender */}
+               <div className="mb-3">
+                  <label className='form-label me-2' htmlFor="Gender">Gender : </label>
+                    <div className="form-check form-check-inline">
+                      <input className="form-check-input" 
+                      type="radio" 
                       name="gender"
-                      id="male"
-                    />
-                    <label className="form-check-label" htmlFor="male">
-                      Male
-                    </label>
-                  </div>
-                  <div className="form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="radio"
+                      value="Male"
+                      onChange={handleChange}
+                      checked={employee.gender == "Male"} 
+                      id="male" />
+                      <label className="form-check-label" htmlFor="radioDefault1">
+                        Male
+                      </label>
+                    </div>
+
+                    <div className="form-check form-check-inline">
+                      <input className="form-check-input" 
+                      type="radio" 
                       name="gender"
-                      id="female"
-                    />
-                    <label className="form-check-label" htmlFor="female">
-                      Female
-                    </label>
-                  </div>
+                      value="Female"
+                      onChange={handleChange}
+                      checked={employee.gender == "Female"} 
+                      id="female" 
+                      />
+                      <label className="form-check-label" htmlFor="radioDefault2">
+                        Female
+                      </label>
+                    </div>
                 </div>
-              </div>
 
               {/* dropdown */}
               <div className="mb-3">
@@ -225,13 +224,14 @@ function App() {
                   <th>Salary</th>
                   <th>Count</th>
                   <th>City</th>
+                  <th>Gender</th>
                   <th>Address</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 {empList.map((user, index) => {
-                  const { id, ename, salary, count,city,address } = user;
+                  const { id, ename, salary, count,city,address,gender } = user;
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -239,6 +239,7 @@ function App() {
                       <td>{salary}</td>
                       <td>{count}</td>
                       <td>{city}</td>
+                      <td>{gender}</td>
                       <td>{address}</td>
                       <td>
                         <button
