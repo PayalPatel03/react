@@ -91,9 +91,11 @@ function App() {
                   id="salary"
                 ></input>
               </div>
+              {/* checkbox */}
               <div className="mb-3">
                 <div>
                   <label className="form-label fw-bold">Count</label>
+                  <br />
                   <div className="form-check form-check-inline ">
                     <label className="form-check-label" htmlFor="first">
                       First
@@ -140,50 +142,115 @@ function App() {
                   </div>
                 </div>
               </div>
+
+              {/* radio */}
+              <div className="mb-3">
+                <div>
+                  <label htmlFor="gender" className="fw-bold mb-3">
+                    Gender
+                  </label>
+                  <br />
+                  <div className="form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      id="male"
+                    />
+                    <label className="form-check-label" htmlFor="male">
+                      Male
+                    </label>
+                  </div>
+                  <div className="form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="gender"
+                      id="female"
+                    />
+                    <label className="form-check-label" htmlFor="female">
+                      Female
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              {/* dropdown */}
+              <div className="mb-3">
+                <label htmlFor="city" className="mb-3">
+                  City
+                </label>
+                <select
+                  id="city"
+                  name="city"
+                  className="form-select"
+                  value={employee.city || ""}
+                  onChange={handleChange}
+                >
+                  <option value="" disabled>
+                    ---select-city---
+                  </option>
+                  <option value="Gandevi">Gandevi</option>
+                  <option value="Navsari">Navsari</option>
+                  <option value="Bilimora">Bilimora</option>
+                </select>
+              </div>
+
+              {/* address */}
+              <div className="mb-3">
+                
+              </div>
+
               <button className="btn btn-info">Add</button>
             </form>
           </div>
-          <table className="table table-bordered mt-5 caption-top">
-            <caption>
-              <h2>Employee Data</h2>
-            </caption>
-            <thead>
-              <tr>
-                <th>Sr.no</th>
-                <th>Employee Name</th>
-                <th>Salary</th>
-                <th>Count</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {empList.map((user, index) => {
-                const { id, ename, salary, count } = user;
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{ename}</td>
-                    <td>{salary}</td>
-                    <td>{count}</td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(id)}
-                        className="btn btn-danger me-2"
-                      >
-                        Delete
-                      </button>
-                      <button
-                        onClick={() => handleEdit(id)}
-                        className="btn btn-warning"
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        </div>
+        <div className="row">
+          <div className="col-md-8 mx-auto">
+            <table className="table table-bordered mt-5 caption-top">
+              <caption>
+                <h2>Employee Data</h2>
+              </caption>
+              <thead>
+                <tr>
+                  <th>Sr.no</th>
+                  <th>Employee Name</th>
+                  <th>Salary</th>
+                  <th>Count</th>
+                  <th>City</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {empList.map((user, index) => {
+                  const { id, ename, salary, count,city } = user;
+                  return (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{ename}</td>
+                      <td>{salary}</td>
+                      <td>{count}</td>
+                      <td>{city}</td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(id)}
+                          className="btn btn-danger me-2"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          onClick={() => handleEdit(id)}
+                          className="btn btn-warning"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
