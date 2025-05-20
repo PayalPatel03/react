@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useState,useRef } from "react";
 import { FaStar } from "react-icons/fa";
 
 function Form() {
-    const [hover, setHover] = useState(0);
-    const [star, setStar] = useState(0);
-    // const [list, setList] = useState([]);
+  const [hover, setHover] = useState([0, 0]);
+  const [star, setStar] = useState([0, 0]);
+    const formRef = useRef();
 
-  const handleHover = (index) => {
-    setHover(index);
-    if (star != 0) {
-      setStar(0);
+  const handleOtherSub = () => {
+    if (formRef.current) {
+      formRef.current.requestSubmit(); // Modern way to submit the form
     }
   };
 
-  const handleLeave = (index) => {
-    setHover(0);
-    setStar(index);
+  const handleHover = (rowIndex, starIndex) => {
+    const newHover = [...hover];
+    newHover[rowIndex] = starIndex;
+    setHover(newHover);
   };
 
-  const handleDown = (index) => {
-    setStar(index);
+  const handleLeave = (rowIndex) => {
+    const newHover = [...hover];
+    newHover[rowIndex] = 0;
+    setHover(newHover);
+  };
+  const handleDown = (rowIndex, starIndex) => {
+    const newStar = [...star];
+    newStar[rowIndex] = starIndex;
+    setStar(newStar);
+  };
+   const handleSubmit = (e) => {
+    e.preventDefault(); 
+    alert("Feedback submitted successfully!");
   };
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            <form method="post">
+            <form method="post" ref={formRef} onSubmit={handleSubmit}>
               <div className="mb-3">
                 <label htmlFor="" className="form-label">
                   Student ID
@@ -60,35 +71,50 @@ function Form() {
               <label htmlFor="feedback" className="form-label">
                 Instructor Feedback
               </label>
-              <table className="table">
+              <table className="table table-warning ">
                 <thead>
                   <tr>
-                    <th>No.</th>
+                    <th>Questions</th>
                     <th>Feedback</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Receive syllabus & instructions at first</td>
-                    <td>
-                      {[...Array(5)].map((_, index) => (
-                        <FaStar
-                          key={index}
-                          onMouseOver={() => handleHover(index + 1)}
-                          onMouseLeave={() => handleLeave(index + 1)}
-                          onClick={() => handleDown(index + 1)}
-                          color={hover > index || star > index ? "gold" : "gray"}
-                          size={"20px"}
-                          style={{ cursor: "pointer" }}
-                        />
-                      ))}
-                    </td>
-                  </tr>
+                  {[
+                    "Receive syllabus & instructions at first",
+                    "Course objectives stated clearly",
+                    "Material presented in class matches syllabus",
+                    "Instructor responded questions",
+                    "Instructor demonstrates adequate knowledge of course",
+                    "Class time is used efficient",
+                    "Instructors overall teaching"
+                  ].map((question, rowIndex) => (
+                    <tr key={rowIndex}>
+                      <td>{question}</td>
+                      <td>
+                        {[...Array(5)].map((_, index) => (
+                          <FaStar
+                            key={index}
+                            onMouseOver={() => handleHover(rowIndex, index + 1)}
+                            onMouseLeave={() => handleLeave(rowIndex)}
+                            onClick={() => handleDown(rowIndex, index + 1)}
+                            color={
+                              hover[rowIndex] > index || star[rowIndex] > index
+                                ? "gold"
+                                : "grey"
+                            }
+                            size={"20px"}
+                            style={{ cursor: "pointer" }}
+                          />
+                        ))}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
+        <button type="submit" onClick={handleOtherSub} className="  btn btn-warning">Submit</button>
       </div>
     </>
   );
