@@ -18,22 +18,21 @@ function App() {
     setList(newList);
     setUser({}); 
   };
- const handleImage=()=>{
-    let file=files[0];
-    
-  let reader=new FileReader();
-  reader.onloadend=()=>{
-    let fileData={
-      name:file.name,
-      type:file.type,
-      url:reader.result
-    }
-    setUser({...user},fileData)
-  }
-  reader.readAsDataURL(file);
-  
+   const handleImage = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
- }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const fileData = {
+        name: file.name,
+        type: file.type,
+        url: reader.result,
+      };
+      setUser({ ...user, file: fileData });
+    };
+    reader.readAsDataURL(file);
+  };
   
  console.log(user);
   return (
@@ -72,13 +71,15 @@ function App() {
                     id="password"
                   />
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="" className="form-label">Choose Image</label>
-                  <input type="file" 
+                  <div className="mb-3">
+                <label className="form-label">Choose Image</label>
+                <input
+                  type="file"
                   name="file"
                   onChange={handleImage}
-                  className="form-label"/>
-                </div>
+                  className="form-control"
+                />
+              </div>
                 
                 <button type="submit" className="btn btn-primary">
                   Submit
@@ -108,7 +109,17 @@ function App() {
                      <td>{idx + 1}</td>
                     <td>{user.email}</td>
                     <td>{user.password}</td>
-                    <td>{user.file}</td>
+                   <td>
+                      {user.file?.url ? (
+                        <img
+                          src={user.file.url}
+                          alt=""
+                          style={{ width: "80px", height: "80px", objectFit: "cover" }}
+                        />
+                      ) : (
+                        "No image"
+                      )}
+                    </td>
 
                       </tr>
                     )
