@@ -1,6 +1,7 @@
 import React from "react";
 
-function Employee() {
+function Employee(props) {
+    let {handleChnage,employee}=props
   return (
     <>
       <div className="container">
@@ -10,19 +11,38 @@ function Employee() {
               <label htmlFor="" className="form-label">
                 Name
               </label>
-              <input type="text" name="ename" id="ename" className="form-control" />
+              <input
+                type="text"
+                name="ename"
+                value={employee.ename || ''}
+                onChange={handleChnage}
+                id="ename"
+                className="form-control"
+              />
             </div>
-             <div className="mb-3">
+            <div className="mb-3">
               <label htmlFor="" className="form-label">
                 Post
               </label>
-              <input type="text" name="post" id="post" className="form-control" />
+              <input
+                type="text"
+                  value={employee.post || ''}
+                onChange={handleChnage}
+                name="post"
+                id="post"
+                className="form-control"
+              />
             </div>
-             <div className="mb-3">
+            <div className="mb-3">
               <label htmlFor="" className="form-label">
                 Salary
               </label>
-              <input type="text" name="salary" id="salary" className="form-control" />
+              <input
+                type="text"
+                name="salary"
+                id="salary"
+                className="form-control"
+              />
             </div>
             <button className="btn btn-info">Add Data</button>
           </div>
