@@ -1,23 +1,34 @@
-import React, { useState } from 'react'
-import Header from './components/Header'
-import Employee from './components/Employee'
+import React, { useState } from 'react';
+import Header from './components/Header';
+import Employee from './components/Employee';
 
 function App() {
-    const [employee, setEmployee] = useState({});
-    const [empList, setEmpList] = useState([]);
+  const [employee, setEmployee] = useState({  }); 
+  const [empList, setEmpList] = useState([]);
 
-    const handleChange=()=>{
-      const{name,value}=empList.target;
-      setEmployee({...employee,[name]:value});
-    }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setEmployee({ ...employee, [name]: value });
+  };
 
+  const handleSubmit = (event) => {
+    event.preventDefault(); 
+    setEmpList([...empList, { ...employee, id: Date.now() }]);
+    setEmployee({  }); 
     
+  };
+
   return (
     <>
-    <Header/>
-      <Employee/>
+      <Header />
+      <Employee
+        employee={employee}
+        empList={empList}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
