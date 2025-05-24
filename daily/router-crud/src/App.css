@@ -1,0 +1,8 @@
+body{
+    background-color:beige !important;
+}
+.nav-link-hover:hover {
+  color: #8ed893 !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+}

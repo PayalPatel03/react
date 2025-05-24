@@ -1,57 +1,71 @@
 import React from "react";
 
-function Employee(props) {
-  const { handleChange, employee, handleSubmit } = props;
+const Employee = (props) => {
+  let { onChange, onSubmit, employee } = props;
 
   return (
-    <div className="container">
-      <div className="row mt-3">
-        <div className="col-md-6 mx-auto">
-          <form onSubmit={handleSubmit}>
-            <h2>Employee Data</h2>
-
-            <div className="mb-3">
-              <label htmlFor="ename" className="form-label">Name</label>
-              <input
-                type="text"
-                name="ename"
-                id="ename"
-                className="form-control"
-                value={employee.ename}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="post" className="form-label">Post</label>
-              <input
-                type="text"
-                name="post"
-                id="post"
-                className="form-control"
-                value={employee.post}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className="mb-3">
-              <label htmlFor="salary" className="form-label">Salary</label>
-              <input
-                type="text"
-                name="salary"
-                id="salary"
-                className="form-control"
-                value={employee.salary}
-                onChange={handleChange}
-              />
-            </div>
-
-            <button type="submit" className="btn btn-info">Add Data</button>
-          </form>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 mx-auto mt-5">
+            <form onSubmit={onSubmit}>
+              <h2
+                className="text-center fw-bold"
+                style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.3)" }}
+              >
+                Employee Data
+              </h2>
+              <div className="mb-3">
+                <label htmlFor="Name" className="form-label fw-semibold ">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="ename"
+                  name="ename"
+                  value={employee.ename || ""}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="Post" className="form-label  fw-semibold ">
+                  Post
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="post"
+                  name="post"
+                  value={employee.post || ""}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="mb-3">
+                <label
+                  htmlFor="exampleInputEmail1"
+                  className="form-label  fw-semibold "
+                >
+                  Salary
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="salary"
+                  name="salary"
+                  value={employee.salary || ""}
+                  onChange={onChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-dark">
+                Add Data
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
-}
+};
 
 export default Employee;
