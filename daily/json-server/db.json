@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Icons",
+      "views": 920
+    },
+    {
+      "id": "4",
+      "title": "advanced JS tips",
+      "views": 220
+    },
+    {
+      "id": "6",
+      "title": "React basics",
+      "views": 250
+    },
+    {
+      "id": "8",
+      "title": "CSS tricks",
+      "views": 275
+    },
+    {
+      "id": "9",
+      "title": "HTML5 guide",
+      "views": 190
+    },
+    {
+      "id": "10",
+      "title": "Web dev trends 2025",
+      "views": 340
+    }
+  ]
+}
