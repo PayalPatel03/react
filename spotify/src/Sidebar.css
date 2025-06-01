@@ -1,0 +1,9 @@
+.sidebar {
+  width: 310px;
+  min-height: 100vh;
+}
+
+.sidebar a {
+  color: #b3b3b3;
+  text-decoration: none;
+}
