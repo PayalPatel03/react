@@ -5,7 +5,7 @@ function Form({ handleChange, handleSubmit, user }) {
     <div className="container">
       <div className="row">
         <div className="col-md-4 mx-auto">
-          <form method="get" onSubmit={handleSubmit}>
+          <form method="post" onSubmit={handleSubmit}>
             <h2 className="mt-3">Login</h2>
 
             <div className="mb-3">
