@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import axios from "axios";
 import Table from "./components/Table";
 import { Routes } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 function App() {
   const URL = "http://localhost:3000/product";
@@ -31,8 +32,15 @@ function App() {
     e.preventDefault();
     if (editId === "") {
       await axios.post(URL, { ...user, id: String(Date.now()) });
+      toast.success("User added Successfully!", {
+       
+      });
     } else {
       let res = await axios.put(`${URL}/${editId}`, { ...user });
+        toast.info("User Updated Successfully!", {
+       
+      });
+
     }
     handleFetch();
     setEditId("");
@@ -41,6 +49,10 @@ function App() {
 
   const handleDelete = async (id) => {
     await axios.delete(`${URL}/${id}`);
+     toast.warn("User Deleted Successfully!", {
+      });
+
+    
     handleFetch();
   };
   const handleEdit = (id) => {
@@ -61,11 +73,22 @@ function App() {
       />
       <Table
         users={users}
+        setUsers={setUsers}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
       />
-
-  
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }
