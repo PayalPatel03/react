@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createUser } from "../features/user/userSlice";
+import { createUser, deleteUser } from "../features/user/userSlice";
 
 const Form = () => {
 
@@ -13,14 +13,11 @@ const Form = () => {
         setUser(data); 
     }
 
-
     const handleSubmit = (e)=>{
         e.preventDefault();
-        dispatch(createUser(user))
+        dispatch(createUser({...user,id:Date.now()}))
         setUser({})
     }
-    
-
 
   return (
     <>

@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
-import {
-  FaHome,
-  FaUser,
-  FaBriefcase,
-  FaEnvelope,
-  FaComments,
-  FaSun,
-  FaMoon,
-  FaArrowRight
-} from 'react-icons/fa';
+import {FaHome,FaUser,FaBriefcase,FaEnvelope,FaComments,FaSun,FaMoon,FaArrowRight} from 'react-icons/fa';
 import './Home.css';
-
+// import test-1 from '.assest/test-1.png';
+import test from '../assets/test.jpg'
 function Home() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -32,7 +24,7 @@ function Home() {
 
         {/* Profile Card */}
         <div className="profile-card shadow">
-          <img src='' alt="profile" className="profile-img" />
+          <img src={test} alt="profile" className="profile-img" />
           <div className="dot-overlay" />
         </div>
 
@@ -42,8 +34,8 @@ function Home() {
             <span className="yellow-line">—</span>{' '}
             <span className="highlight">I'M PAYAL PATEL.</span>
           </h1>
-          <h2 className="fw-bold mx-5">FULL Stack Developer</h2>
-          <p className="mx-5">
+          <h2 className="fw-bold mx-5 text-secondary">FULL Stack Developer</h2>
+          <p className="mx-5 text-secondary">
             I'm a Tunisian-based web designer & front-end developer focused on crafting clean & user-friendly
             experiences. I am passionate about building excellent software that improves the lives of those around me.
           </p>

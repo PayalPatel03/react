@@ -1,10 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteUser } from "../features/user/userSlice";
 
 const Table = () => {
-
-   const { users } = useSelector(state => state.user);
-
+  const { users } = useSelector((state) => state.user);
+  const disptach = useDispatch();
 
   return (
     <>
@@ -12,7 +12,7 @@ const Table = () => {
         <div className="row">
           <div className="col-md-6 mx-auto">
             <table className="table">
-              <thead >
+              <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Email</th>
@@ -21,19 +21,27 @@ const Table = () => {
                 </tr>
               </thead>
               <tbody>
-                {
-                  users.map((val,idx)=>(
-                    <tr key={idx}>
-                      <td>{idx+1}</td>
-                      <td>{val.email}</td>
-                      <td>{val.password}</td>
-                      <td>
-                        <button className="btn btn-warning me-1">Edit</button>
-                        <button className="btn btn-danger me-1">Delete</button>
-                      </td>
-                    </tr>
-                  ))
-                }
+                {users.map((val, idx) => (
+                  <tr key={idx}>
+                    <td>{idx + 1}</td>
+                    <td>{val.email}</td>
+                    <td>{val.password}</td>
+                    <td>
+                      <button
+                        className="btn btn-warning me-1"
+                       >
+                        Edit
+                      </button>
+
+                      <button
+                        className="btn btn-danger"
+                        onClick={() => disptach(deleteUser(val.id))}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
