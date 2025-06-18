@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUser } from "../features/user/userSlice";
+import { deleteUser, editUser } from "../features/user/userSlice";
 
 const Table = () => {
   const { users } = useSelector((state) => state.user);
@@ -29,6 +29,7 @@ const Table = () => {
                     <td>
                       <button
                         className="btn btn-warning me-1"
+                        onClick={()=> disptach(editUser(val.id))}
                        >
                         Edit
                       </button>
