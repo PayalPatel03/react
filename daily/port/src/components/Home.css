@@ -1,5 +1,5 @@
 body {
-  background-color: #111;
+  background-color: black;
   font-family: 'Segoe UI', sans-serif;
 }
 
@@ -7,7 +7,7 @@ body {
   position: relative;
   min-height: 100vh;
   padding: 40px;
-  background-color: #111;
+  background-color: black;
 }
 
 .yellow-corner {
@@ -65,11 +65,17 @@ body {
 }
 
 .sidebar-icons {
-  position: absolute;
-  right: 20px;
-  top: 140px;
-  z-index: 2;
+  position: fixed;
+  top: 50%;
+  right: 20px; /* Adjust as needed */
+  transform: translateY(-50%);
+  z-index: 1000;
+
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+
 
 .icon-btn {
   width: 50px;
@@ -154,12 +160,12 @@ body {
 
 /* Dark Theme (example) */
 body.dark-theme {
-  background-color: #121212;
+  background-color: black;
   color: #ffffff;
 }
 
 .home-container.dark {
-  background-color: #121212;
+  background-color: black;
   color: white;
 }
 

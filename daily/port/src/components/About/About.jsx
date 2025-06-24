@@ -1,9 +1,15 @@
 import React from "react";
 import "./About.css";
-import { FaBriefcase } from "react-icons/fa";
+import {
+  FaBriefcase,
+  FaComments,
+  FaEnvelope,
+  FaHome,
+  FaUser,
+} from "react-icons/fa";
+import { Link } from "react-router";
 // import profile from '../assets/profile.jpeg'
 function About() {
-  
   return (
     <>
       <section className="container-fluid py-5 text-white bg-black">
@@ -64,6 +70,135 @@ function About() {
           </div>
         </div>
       </section>
+        {/*Slill */}
+      <section className="skills-section py-5 bg-black">
+        <div className="container position-relative text-center">
+          <h2 className="text-center text-white fw-bold mb-5">SKILL</h2>
+          <div className="row position-relative z-1">
+            {/* Skill Card */}
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/174/174854.png"
+                  alt="HTML"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">HTML</h5>
+              </div>
+            </div>
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/732/732190.png"
+                  alt="CSS"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">CSS</h5>
+              </div>
+            </div>
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
+                  alt="JavaScript"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">JavaScript</h5>
+              </div>
+            </div>
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png"
+                  alt="React"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">React</h5>
+              </div>
+            </div>
+            {/* Row 2 */}
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/733/733553.png"
+                  alt="GitHub"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">GitHub</h5>
+              </div>
+            </div>
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png"
+                  alt="C"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">C Language</h5>
+              </div>
+            </div>
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png"
+                  alt="Java"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">Java</h5>
+              </div>
+            </div>
+            <div className="col-md-3 col-6 mb-4">
+              <div className="skill-card">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png"
+                  alt="Bootstrap"
+                  className="skill-icon"
+                />
+                <h5 className="text-white">Bootstrap</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="sidebar-icons d-flex flex-column align-items-center gap-3">
+          <div className="icon-wrapper">
+              <button className="slide-btn">Home</button>
+            <div className="icon-btn ">
+              <Link to="/" className="icon-btn "> <FaHome /></Link>
+             
+            </div>
+          </div>
+          <div className="icon-wrapper">
+            <button className="slide-btn">About</button>
+            <div className="icon-btn">
+              <Link to="/about" className="icon-btn active">
+                {" "}
+                <FaUser />
+              </Link>
+            </div>
+          </div>
+          <div className="icon-wrapper">
+            <button className="slide-btn">Portfolio</button>
+            <div className="icon-btn">
+              <FaBriefcase />
+            </div>
+          </div>
+          <div className="icon-wrapper">
+            <button className="slide-btn">Contact</button>
+            <div className="icon-btn">
+              <Link to="/contact" className="icon-btn">
+                {" "}
+                <FaEnvelope />
+              </Link>
+            </div>
+          </div>
+          <div className="icon-wrapper">
+            <button className="slide-btn">Chat</button>
+            <div className="icon-btn">
+              <FaComments />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* eduvcation */}
       <section className="container-fluid py-5 text-white bg-black">
@@ -77,7 +212,7 @@ function About() {
               </div>
               <div className="timeline-content">
                 <span className="badge bg-secondary mb-1">2023 - Present</span>
-                 <h5 className="text-white fw-bold" >
+                <h5 className="text-white fw-bold">
                   BACHELOR OF ENGINEER
                   <span className="text-secondary">— Computer engineering</span>
                 </h5>
@@ -142,65 +277,7 @@ function About() {
         </div>
       </section>
 
-      {/*Slill */}
-      <section className="skills-section py-5 bg-black">
-  <div className="container position-relative text-center">
-    <h2 className="text-center text-white fw-bold mb-5">SKILL</h2>
-    <div className="row position-relative z-1">
-      {/* Skill Card */}
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174854.png" alt="HTML" className="skill-icon" />
-           <h5 className="text-white">HTML</h5>
-        </div>
-      </div>
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS" className="skill-icon" />
-           <h5 className="text-white">CSS</h5>
-        </div>
-      </div>
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" className="skill-icon" />
-           <h5 className="text-white">JavaScript</h5>
-        </div>
-      </div>
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React" className="skill-icon" />
-           <h5 className="text-white">React</h5>
-        </div>
-      </div>
-      {/* Row 2 */}
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" className="skill-icon" />
-           <h5 className="text-white">GitHub</h5>
-        </div>
-      </div>
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="C" className="skill-icon" />
-           <h5 className="text-white">C Language</h5>
-        </div>
-      </div>
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png" alt="Java" className="skill-icon" />
-           <h5 className="text-white">Java</h5>
-        </div>
-      </div>
-      <div className="col-md-3 col-6 mb-4">
-        <div className="skill-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="Bootstrap" className="skill-icon" />
-           <h5 className="text-white">Bootstrap</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+    
     </>
   );
 }
