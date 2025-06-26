@@ -5,13 +5,20 @@ import {
   FaComments,
   FaEnvelope,
   FaHome,
+  FaMoon,
   FaUser,
+  
 } from "react-icons/fa";
 import { Link } from "react-router";
+import img1 from '../../assets/img1.jpg';
+
 // import profile from '../assets/profile.jpeg'
 function About() {
+ 
   return (
     <>
+   
+
       <section className="container-fluid py-5 text-white bg-black">
         <h1 className="text-center display-4 fw-bold">
           <span className="text-white">ABOUT</span>
@@ -63,7 +70,7 @@ function About() {
           {/* Stats */}
           <div className="col-md-6 img">
             <img
-              src="https://cdn.pixabay.com/photo/2016/05/01/19/47/photographer-1365674_1280.jpg"
+              src={img1}
               c
               alt=""
             />

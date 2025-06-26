@@ -143,7 +143,7 @@ function Contact() {
           <div className="icon-wrapper">
             <button className="slide-btn">Contact</button>
             <div className="icon-btn">
-              <Link to="/contact" className="icon-btn">
+              <Link to="/contact" className="icon-btn active">
                 {" "}
                 <FaEnvelope />
               </Link>

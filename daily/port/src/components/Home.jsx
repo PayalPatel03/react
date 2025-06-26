@@ -61,7 +61,7 @@ function Home() {
           <div className="icon-wrapper">
             <button className="slide-btn">Home</button>
             <div className="icon-btn ">
-              <Link to="/" className="icon-btn ">
+              <Link to="/" className="icon-btn active">
                 {" "}
                 <FaHome />
               </Link>

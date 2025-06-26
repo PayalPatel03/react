@@ -9,15 +9,31 @@ h1 span.text-warning {
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
+.dark-theme {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
 
+/* Optional styling for About section */
+.about-section {
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* Theme icon */
+.theme-toggle-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
 .stat-card:hover {
   transform: scale(1.05);
   background-color: #111;
 }
-.col-md-6 img{
-    height: 400px;
-    border-radius: 20px;
-    width: 500px;
+.col-md-6 img {
+  height: 400px;
+  border-radius: 50px;
+  width: 350px;
 }
 
 
