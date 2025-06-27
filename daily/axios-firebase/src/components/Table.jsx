@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../features/users/thunk";
+import { FaEdit, FaEye, FaEyeSlash } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 function Table() {
   const dispatch = useDispatch();
@@ -8,12 +10,13 @@ function Table() {
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
+  const [visibleIndex, setVisibleIndex] = useState(null);
 
   return (
     <>
       <div className="container">
         <div className="row mt-3">
-          <div className="col-md-6 mx-auto">
+          <div className="col-md-8 mx-auto">
             <table className="table">
               <thead>
                 <tr>
@@ -24,22 +27,35 @@ function Table() {
                 </tr>
               </thead>
               <tbody>
-                {
-                    user.map((item,idx)=>{
-                        const { email , password } = item;
-                        return(
-                            <tr key={idx}>
-                                <td>{idx + 1}</td>
-                                <td>{email}</td>
-                                <td>{password}</td>
-                                <td>
-                                    <button className="btn btn-warning me-1">Edit</button>
-                                    <button className="btn btn-danger me-1">Delete</button>
-                                </td>
-                            </tr>
-                        )
-                    })
-                }
+                {user.map((item, idx) => {
+                  const { email, password } = item;
+                  return (
+                    <tr key={idx}>
+                      <td>{idx + 1}</td>
+                      <td>{email}</td>
+                      <td className="d-flex align-items-center">
+                        <input
+                          type={visibleIndex === idx ? "text" : "password"}
+                          name="password"
+                          value={password}
+                          className="form-control me-2"
+                        />
+                        <span
+                          style={{ cursor: "pointer" }}
+                          onClick={() =>
+                            setVisibleIndex(visibleIndex === idx ? null : idx)
+                          }
+                        >
+                          {visibleIndex === idx ? <FaEyeSlash /> : <FaEye />}
+                        </span>
+                      </td>
+                      <td>
+                        <button className="btn btn-warning me-2 "><FaEdit /></button>
+                        <button className="btn btn-danger "><RiDeleteBin6Line /></button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
