@@ -10,3 +10,5 @@ export const createUser = createAsyncThunk('user/createUser',async (user,{reject
         return rejectWithValue(error.message)
     }
 })
+
+
