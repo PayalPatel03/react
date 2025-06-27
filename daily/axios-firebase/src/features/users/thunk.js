@@ -13,7 +13,8 @@ export const createUser = createAsyncThunk('user/createUser',async (user,{reject
 
 export const fetchUser=createAsyncThunk('user/fetchUser',async(_,rejectWithValue)=>{
     try{
-        let res=await axios.axiosInstance.get('./json');
+        let res = await axiosInstance.get('/.json');
+
         return res.data;
     }
     catch(error){

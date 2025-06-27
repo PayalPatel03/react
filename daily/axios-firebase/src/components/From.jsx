@@ -15,6 +15,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createUser(user));
+    setUser({})
   };
   const dispatch = useDispatch();
 
