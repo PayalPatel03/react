@@ -12,6 +12,8 @@ function Table() {
     dispatch(fetchUser());
   }, []);
   const [visibleIndex, setVisibleIndex] = useState(null);
+  const { loading,error} = useSelector(state=>state.user)
+
 
   return (
     <>
@@ -28,7 +30,15 @@ function Table() {
                 </tr>
               </thead>
               <tbody>
-                {user.map((item, idx) => {
+               {
+                loading ?
+                <>
+                <tr>
+                  <h2 className="text-center text-info">Loading Data...</h2>
+                </tr>
+                </>
+                :
+                 user.map((item, idx) => {
                   const { email, password,id } = item;
                   return (
                     <tr key={idx}>
@@ -57,7 +67,8 @@ function Table() {
                       </td>
                     </tr>
                   );
-                })}
+                })
+               }
               </tbody>
             </table>
           </div>

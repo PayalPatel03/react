@@ -8,15 +8,18 @@ const Form = () => {
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
+
   const handlechange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createUser(user));
-    setUser({})
+    setUser({});
   };
+
   const dispatch = useDispatch();
 
   return (
@@ -53,7 +56,6 @@ const Form = () => {
                   id="exampleInputPassword1"
                 />
               </div>
-
               <button type="submit" className="btn btn-primary">
                 Submit
               </button>
