@@ -36,6 +36,7 @@ function Table() {
                       <td>{email}</td>
                       <td className="d-flex align-items-center">
                         <input
+                        disabled
                           type={visibleIndex === idx ? "text" : "password"}
                           name="password"
                           value={password}
