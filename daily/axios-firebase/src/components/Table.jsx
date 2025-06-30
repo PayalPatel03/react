@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser } from "../features/users/thunk";
+import { deleteUser, fetchUser } from "../features/users/thunk";
 import { FaEdit, FaEye, FaEyeSlash } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 function Table() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
@@ -28,7 +29,7 @@ function Table() {
               </thead>
               <tbody>
                 {user.map((item, idx) => {
-                  const { email, password } = item;
+                  const { email, password,id } = item;
                   return (
                     <tr key={idx}>
                       <td>{idx + 1}</td>
@@ -51,7 +52,7 @@ function Table() {
                       </td>
                       <td>
                         <button className="btn btn-warning me-2 "><FaEdit /></button>
-                        <button className="btn btn-danger "><RiDeleteBin6Line /></button>
+                        <button onClick={()=> dispatch(deleteUser(id))} className="btn btn-danger "><RiDeleteBin6Line /></button>
                       </td>
                     </tr>
                   );
