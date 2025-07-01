@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { createUser, fetchUser } from "../features/users/thunk";
+import { createUser, editUser, fetchUser } from "../features/users/thunk";
 
-const Form = () => {
-  const [user, setUser] = useState({});
+const Form = ({user,setUser,editId,setEditId}) => {
+  
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -16,7 +16,15 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createUser(user));
+     if(editId !== null){
+      console.log(user);      
+      dispatch(editUser({...user}));
+      setEditId(null);
+    }
+    else
+    {
+      dispatch(createUser(user));
+    }
     setUser({});
   };
 
