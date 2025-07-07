@@ -10,7 +10,7 @@ import {
   FaArrowRight,
 } from "react-icons/fa";
 import "./Home.css";
-// import test-1 from '.assest/test-1.png';
+import img1 from '../assets/img1.jpg';
 import test from "../assets/test.jpg";
 import { Link } from "react-router";
 function Home() {
@@ -34,7 +34,7 @@ function Home() {
 
         {/* Profile Card */}
         <div className="profile-card shadow">
-          <img src={test} alt="profile" className="profile-img" />
+          <img src={img1} alt="profile" className="profile-img" />
           <div className="dot-overlay" />
         </div>
 

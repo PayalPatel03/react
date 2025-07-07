@@ -1,5 +1,7 @@
 import axios from "axios"
 
-export const axiosInstance = axios.create({
-    baseURL : process.env.REACT_APP_FIREBASE_DATABASE_URL
+ const axiosInstance = axios.create({
+    databaseURL : process.env.REACT_APP_FIREBASE_DATABASE_URL
 })
+
+export default axiosInstance

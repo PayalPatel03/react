@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import apiInstance from "../../api/apiInstance";
+import apiInstance from "../../api/axiosInstance";
 
 export const createTodo = createAsyncThunk('todo/createTodo',async(user,{rejectWithValue})=>{
     try {
